@@ -12,7 +12,7 @@
   - name: Create and run RHEL VM from template
     ovirt_vm:
       name: "{{ vm_name | default('test0002', true) }}"
-      template: default-template
+      template: default_template
       cluster: "{{ cluster | default('Default', true) }}"
       memory: "{{vm_memory | default('1GiB', true) }}"
       high_availability: true
