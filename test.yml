@@ -2,6 +2,7 @@
 - name: Test Playbook
   hosts: all
   gather_facts: no
+  connection: local
   
   tasks:
   - name: Tell me all about yourself
