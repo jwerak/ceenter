@@ -1,0 +1,19 @@
+---
+- name: Delete an VM instance
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  vars:
+    gcp_project: ceenter
+    scopes:
+      - https://www.googleapis.com/auth/compute
+    zone: "europe-west3-a"
+    region: "europe-west3"
+
+  tasks:
+  - name: delete an instance
+    gcp_compute_instance:
+      state: absent
+      name: "{{ vm_name | default('ansible-tower-test', true) }}"
+      zone: "{{ zone }}"
+      project: "{{ gcp_project }}"
