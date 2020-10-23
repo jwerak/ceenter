@@ -6,7 +6,7 @@
 
   vars:
 #    datacenter: Default
-    
+
   tasks:
 
   - name: Create and run RHEL VM from template

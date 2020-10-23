@@ -1,0 +1,5 @@
+---
+collections:
+  - name: google.cloud
+    source: https://cloud.redhat.com/api/automation-hub/
+    version: 1.0.0
