@@ -5,8 +5,6 @@
   gather_facts: no
   vars:
     gcp_project: ceenter
-    scopes:
-      - https://www.googleapis.com/auth/compute
     zone: "europe-west3-a"
     region: "europe-west3"
 
@@ -17,3 +15,9 @@
       name: "{{ vm_name | default('ansible-tower-test', true) }}"
       zone: "{{ zone }}"
       project: "{{ gcp_project }}"
+  - name: delete an address
+    gcp_compute_address:
+        name: "{{ vm_address_name | default('ansible-tower-test-address', true) }}"
+        region: "{{ region }}"
+        project: "{{ gcp_project }}"
+        state: absent

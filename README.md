@@ -51,7 +51,9 @@ Download [GCP credentials](https://docs.ansible.com/ansible/latest/scenario_guid
 ansible-playbook GCP_VM_Create.yml
 ```
 
-## Ansible Tower Setup
+## Ansible Tower
+
+### Tower setup
 
 Create Credential:
 - GCP connection
@@ -68,3 +70,32 @@ Create Job Templates:
 Authenticate Ansible Tower to Automation-hub:
 - Retrieve token at https://cloud.redhat.com/ansible/automation-hub/token
 - Update token in Ansible Tower: https://www.ansible.com/blog/installing-and-using-collections-on-ansible-tower
+
+### OpenShift setup
+
+Additional Container Group on OpenShift
+- `oc create -n tower -f ocp-setup/role-pod-manager.yml`
+- `oc create -n tower -f ocp-setup/sa-tower-container-group.yml`
+- `oc create -n tower -f ocp-setup/rb-tower-container-group.yml`
+
+Download serviceaccount credentials, e.g. from ui download serviceaccount kubeconfig.
+
+Customize Pod Spec on Instance Group
+```yaml
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  namespace: tower
+spec:
+  containers:
+    - image: quay.io/ceenter/ansible-runner-google:1.4.6
+      tty: true
+      stdin: true
+      imagePullPolicy: Always
+      args:
+        - sleep
+        - infinity
+```
+
+Container image is build in [ansible-runner-images repository](https://github.com/ceenter/ansible-runner-images).
