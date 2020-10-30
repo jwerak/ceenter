@@ -1,0 +1,8 @@
+---
+- name: Include Create GCP VM Tasks
+  include_tasks: create.yml
+  when: gcp_vm_state_present
+
+- name: Include Delete GCP VM Tasks
+  include_tasks: delete.yml
+  when: not gcp_vm_state_present
