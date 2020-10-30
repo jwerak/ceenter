@@ -7,17 +7,7 @@
     gcp_project: ceenter
     zone: "europe-west3-a"
     region: "europe-west3"
+    gcp_vm_state_present: false
 
-  tasks:
-  - name: delete an instance
-    gcp_compute_instance:
-      state: absent
-      name: "{{ vm_name | default('ansible-tower-test', true) }}"
-      zone: "{{ zone }}"
-      project: "{{ gcp_project }}"
-  - name: delete an address
-    gcp_compute_address:
-        name: "{{ vm_address_name | default('ansible-tower-test-address', true) }}"
-        region: "{{ region }}"
-        project: "{{ gcp_project }}"
-        state: absent
+  roles:
+  - name: gcp_vm

@@ -1,0 +1,34 @@
+---
+- name: create a disk
+  gcp_compute_disk:
+      name: "{{ vm_disk_name | default('ansible-tower-test-disk', true) }}"
+      size_gb: 50
+      source_image: 'projects/ubuntu-os-cloud/global/images/family/ubuntu-1604-lts'
+      zone: "{{ zone }}"
+      project: "{{ gcp_project }}"
+      state: present
+  register: disk
+- name: create a address
+  gcp_compute_address:
+      name: "{{ vm_address_name | default('ansible-tower-test-address', true) }}"
+      region: "{{ region }}"
+      project: "{{ gcp_project }}"
+      state: present
+  register: address
+- name: create a instance
+  gcp_compute_instance:
+      state: present
+      name: "{{ vm_name | default('ansible-tower-test', true) }}"
+      machine_type: "{{ gcp_vm_machine_type }}"
+      disks:
+        - auto_delete: true
+          boot: true
+          source: "{{ disk }}"
+      network_interfaces:
+          - network: null # use default
+            access_configs:
+              - name: 'External NAT'
+                nat_ip: "{{ address }}"
+                type: 'ONE_TO_ONE_NAT'
+      zone: "{{ zone }}"
+      project: "{{ gcp_project }}"
