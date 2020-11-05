@@ -1,0 +1,25 @@
+---
+# Role for managing Pods, presumably by Ansible Tower
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: pod-manager
+rules:
+  - verbs:
+      - get
+      - list
+      - watch
+      - create
+      - update
+      - patch
+      - delete
+    apiGroups:
+      - ''
+    resources:
+      - pods
+  - verbs:
+      - create
+    apiGroups:
+      - ''
+    resources:
+      - pods/exec

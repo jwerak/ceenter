@@ -1,0 +1,3 @@
+---
+gcp_vm_state_present: true
+gcp_vm_machine_type: n1-standard-1

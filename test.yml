@@ -1,0 +1,14 @@
+---
+- name: Test Playbook
+  hosts: all
+  gather_facts: no
+  connection: local
+  
+  tasks:
+  - name: Tell me all about yourself
+    setup:
+    register: fact_variable
+    
+  - name: Show it on screen
+    debug:
+      msg: "{{ fact_variable }}" 
