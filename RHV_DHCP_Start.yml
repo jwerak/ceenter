@@ -1,0 +1,11 @@
+---
+- name: Start DHCP
+  hosts: all
+  gather_facts: no
+
+  tasks:
+    - name: Start DHCP
+      service:
+        name: dhcpd
+        state: started
+      become: true
