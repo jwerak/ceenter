@@ -97,3 +97,12 @@ spec:
 ```
 
 Container image is build in [ansible-runner-images repository](https://github.com/ceenter/ansible-runner-images).
+
+## Api Caller
+
+The API Caller is an example GUI which helps generating the propoer API syntax. Ultimately it may also execute the API call, but not at this stage yet.
+The metdata for API Caller is under the api-caller folder. The first file is the menu-map.json where the interactive menu options are defined.
+
+
+
+
