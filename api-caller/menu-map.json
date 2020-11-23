@@ -1,0 +1,122 @@
+{
+  "Request Type": {
+	  "variableName": "request_type",
+	  "inputType": "list",
+	  "valueTable": {
+		  "Service": "Service Type",
+		  "Task": "",
+		  "Report": ""
+	  }
+  },
+  "Service Type": {
+	  "variableName": "service_type",
+	  "inputType": "list",
+	  "valueTable": {
+		  "VM": "Platform",
+		  "Storage": "",
+		  "Network": "",
+		  "Application": ""
+	  }
+  },
+  "Platform": {
+	  "variableName": "platform",
+	  "inputType": "list",
+	  "valueTable": {
+		  "RHV": "",
+		  "GCP": "",
+		  "Azure": "",
+		  "OpenStack": "",
+		  "default": "VM Operation"
+	  }
+  },
+  "VM Operation": {
+	  "variableName": "vm_operation",
+	  "inputType": "list",
+	  "valueTable": {
+		  "Create": "VM Name",
+		  "List": "",
+		  "Delete": "",
+		  "Start": "",
+		  "Stop": ""
+	  }
+  }, 
+  "VM Flavor": {
+	  "variableName": "vm_flavor",
+	  "inputType": "list",
+	  "valueTable": {
+		  "Custom": "VM Memory",
+		  "Small": "Small VM Memory",
+		  "Medium": "",
+		  "Large": ""
+	  }
+  },
+  "Small VM Memory": {
+	  "variableName": "vm_memory",
+	  "inputType": "auto",
+	  "valueTable": {
+		  "2": "Small VM CPU"
+	  }
+  },
+  "VM Memory": {
+	  "variableName": "vm_memory",
+	  "inputType": "list",
+	  "valueTable": {
+		  "2": "",
+		  "4": "",
+		  "8": "",
+		  "16": "",
+		  "default": "VM CPU"
+	  }
+  },
+  "Small VM CPU": {
+	  "variableName": "vm_cpu",
+	  "inputType": "auto",
+	  "valueTable": {
+		  "1": "Small VM Disk Size"
+	  }
+  },
+  "VM CPU": {
+	  "variableName": "vm_cpu",
+	  "inputType": "list",
+	  "valueTable": {
+		  "1": "",
+		  "2": "",
+		  "3": "",
+		  "4": "",
+		  "default": "VM Disk Size"
+	  }
+  },
+  "Small VM Disk Size": {
+	  "variableName": "vm_disk_size",
+	  "inputType": "auto",
+	  "valueTable": {
+		  "20": "Submit"
+
+	  }
+  },
+  "VM Disk Size": {
+	  "variableName": "vm_disk_size",
+	  "inputType": "list",
+	  "valueTable": {
+		  "20": "",
+		  "40": "",
+		  "60": "",
+		  "default": "Submit"
+	  }
+  },
+  "VM Name": {
+	  "variableName": "vm_name",
+	  "inputType": "manual",
+	  "regexValidation": "^[a-z][a-z0-9-]*[a-z0-9]$", 
+	  "valueTable": {
+		  "default": "VM Flavor"
+	  }
+  },
+  "Submit": {
+	  "variableName": "submit",
+	  "inputType": "list",
+	  "valueTable": {
+		  "Yes": ""
+	  }
+  }
+}
