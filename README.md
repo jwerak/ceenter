@@ -4,27 +4,23 @@
 **Table of Contents**
 
 - [Ceenter](#ceenter)
-    - [Metadata for VM Creation](#metadata-for-vm-creation)
-        - [Ansible naming convention](#ansible-naming-convention)
-            - [Ansible Playbook names](#ansible-playbook-names)
-            - [Ansible Playbook Variable names](#ansible-playbook-variable-names)
-            - [Ansible role variable names](#ansible-role-variable-names)
+    - [Ansible naming convention](#ansible-naming-convention)
+        - [Ansible Playbook names](#ansible-playbook-names)
+        - [Ansible Playbook Variable names](#ansible-playbook-variable-names)
+        - [Ansible role variable names](#ansible-role-variable-names)
     - [Local setup](#local-setup)
         - [Prerequisites](#prerequisites)
         - [Install Ansible collections](#install-ansible-collections)
         - [Create VM on GCP](#create-vm-on-gcp)
-    - [Ansible Tower](#ansible-tower)
-        - [Tower setup](#tower-setup)
-        - [OpenShift setup](#openshift-setup)
+        - [Manual Tower setup](#manual-tower-setup)
+    - [OpenShift setup](#openshift-setup)
     - [Api Caller](#api-caller)
 
 <!-- markdown-toc end -->
 
-## Metadata for VM Creation
+## Ansible naming convention ##
 
-### Ansible naming convention
-
-#### Ansible Playbook names
+### Ansible Playbook names ###
 
 **Playbook names** are in form of:
 
@@ -34,7 +30,7 @@ Example: Create VM on GCP platform
 
 *Service-VM-GCP-Create.yml*
 
-#### Ansible Playbook Variable names
+### Ansible Playbook Variable names ###
 
 Convention for ceenter external Ansible variable prefixes:
 
@@ -53,7 +49,7 @@ Ceenter metadata variables for VM Creation:
 | `ceenter_vm_storage_flavor` | standard      | standard, performance          | Prefix for VM related roles |
 | `ceenter_vm_region`         | standard      | standard, performance          | Prefix for VM related roles |
 
-#### Ansible role variable names
+### Ansible role variable names ###
 
 Role variable names should be in form: `<role_name>_*`, so for example disk size in *gcp_vm* role will be defined as `gcp_vm_disk_size_gb`.
 
@@ -94,9 +90,8 @@ Download [GCP credentials](https://docs.ansible.com/ansible/latest/scenario_guid
 ansible-playbook GCP_VM_Create.yml
 ```
 
-## Ansible Tower
 
-### Tower setup
+### Manual Tower setup ###
 
 Create Credential:
 - GCP connection
@@ -114,7 +109,7 @@ Authenticate Ansible Tower to Automation-hub:
 - Retrieve token at https://cloud.redhat.com/ansible/automation-hub/token
 - Update token in Ansible Tower: https://www.ansible.com/blog/installing-and-using-collections-on-ansible-tower
 
-### OpenShift setup
+## OpenShift setup ##
 
 Additional Container Group on OpenShift
 - `oc create -n tower -f ocp-setup/role-pod-manager.yml`
