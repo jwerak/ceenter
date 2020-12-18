@@ -99,7 +99,7 @@ Create Credential:
 - RHV
 
 Create Project:
-- technical
+- Ceenter Repo (https://github.com/ceenter/ceenter.git)
 
 Create Job Templates:
 - GCP Create VM
@@ -108,6 +108,54 @@ Create Job Templates:
 Authenticate Ansible Tower to Automation-hub:
 - Retrieve token at https://cloud.redhat.com/ansible/automation-hub/token
 - Update token in Ansible Tower: https://www.ansible.com/blog/installing-and-using-collections-on-ansible-tower
+
+#### Use awx cli tool ####
+
+Install awx https://docs.ansible.com/ansible-tower/latest/html/towercli/usage.html#installation.
+
+Tool awx doesn't have any local config file to store credentials, but you can export your credentials in local file.
+
+You can use simple script to auth to Tower and use save auth key:
+```bash
+./utils/awx_login.py <TOWER_HOST> <TOWER_USER> <TOWER_PASSWORD> > ~/.awx_conf.env
+source ~/.awx_conf.env
+# Test config
+awx activity_stream list
+```
+
+or create file manually:
+```bash
+cat > ~/.awx_conf.env <<EOF
+export TOWER_HOST=${TOWER_HOST}
+export TOWER_VERIFY_SSL=False
+export TOWER_USERNAME=${TOWER_USERNAME}
+export TOWER_OAUTH_TOKEN=${TOWER_OAUTH_TOKEN}
+EOF
+```
+
+#### Setup Job Templates ####
+
+##### Create GCP VM #####
+
+Create Job Template:
+
+```yaml
+name: GCP VM Create
+description: Create VM on GCP
+job_type: Run
+inventory: localhost
+project: Ceenter Repo
+Playbook: Service-VM-GCP-Create.yml
+credentials: ['gcp-jveverka']
+instance_group: Container with google auth
+```
+
+Create Survey for Job Template:
+
+```yaml
+Parameters: {"vm_name":"mytest","vm_flavor":"Small","vm_memory":2,"vm_cpu":1,"vm_disk_size":20}
+```
+
 
 ## OpenShift setup ##
 
