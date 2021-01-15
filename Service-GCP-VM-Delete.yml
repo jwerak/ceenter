@@ -1,0 +1,7 @@
+---
+- name: Delete an VM instance
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  roles:
+  - name: gcp_vm

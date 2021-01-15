@@ -1,0 +1,5 @@
+---
+vm_flavor_options:
+  small: n1-standard-1
+  medium: n1-standard-2
+  large: n1-standard-4
