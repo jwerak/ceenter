@@ -13,6 +13,9 @@
         - [Install Ansible collections](#install-ansible-collections)
         - [Create VM on GCP](#create-vm-on-gcp)
         - [Manual Tower setup](#manual-tower-setup)
+            - [Use awx cli tool](#use-awx-cli-tool)
+            - [Setup Job Templates](#setup-job-templates)
+                - [Create GCP VM](#create-gcp-vm)
     - [OpenShift setup](#openshift-setup)
     - [Api Caller](#api-caller)
 
