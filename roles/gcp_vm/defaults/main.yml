@@ -1,8 +1,8 @@
 ---
 # Global input Ceenter variables used in this role
 vm_name: test
-vm_flavor: Small,
-vm_disk_size: 20,
+vm_flavor: Small
+vm_disk_size: 20
 
 # Local role defaults
 gcp_vm_state_present: true
