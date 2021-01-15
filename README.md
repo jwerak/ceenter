@@ -5,7 +5,8 @@
 
 - [Ceenter](#ceenter)
     - [Ansible naming convention](#ansible-naming-convention)
-        - [Ansible Playbook names](#ansible-playbook-names)
+        - [Ansible Tower Job Template naming](#ansible-tower-job-template-naming)
+        - [Ansible Playbook naming](#ansible-playbook-naming)
         - [Ansible Playbook Variable names](#ansible-playbook-variable-names)
         - [Ansible role variable names](#ansible-role-variable-names)
     - [Local setup](#local-setup)
@@ -23,7 +24,19 @@
 
 ## Ansible naming convention ##
 
-### Ansible Playbook names ###
+### Ansible Tower Job Template naming ###
+
+**Job Template names** are in form of:
+
+*<requesttype>-<servicetype>-<platform>-<operation>*
+
+Example: Create VM on GCP platform
+
+*Service-VM-GCP-Create*
+
+Job Template must accept extra variables defined as part of API Caller.
+
+### Ansible Playbook naming ###
 
 **Playbook names** are in form of:
 
