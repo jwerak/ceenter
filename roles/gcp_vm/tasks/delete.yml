@@ -2,12 +2,13 @@
 - name: delete an instance
   gcp_compute_instance:
     state: absent
-    name: "{{ vm_name | default('ansible-tower-test', true) }}"
+    name: "{{ vm_name }}"
     zone: "{{ zone }}"
     project: "{{ gcp_project }}"
+
 - name: delete an address
   gcp_compute_address:
-      name: "{{ vm_address_name | default('ansible-tower-test-address', true) }}"
-      region: "{{ region }}"
-      project: "{{ gcp_project }}"
-      state: absent
+    name: "{{ gcp_vm_address_name }}"
+    region: "{{ region }}"
+    project: "{{ gcp_project }}"
+    state: absent
