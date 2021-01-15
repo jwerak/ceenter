@@ -48,22 +48,17 @@ Example: Create VM on GCP platform
 
 ### Ansible Playbook Variable names ###
 
-Convention for ceenter external Ansible variable prefixes:
-
-| prefix        | purpose                     |
-|---------------|-----------------------------|
-| `ceenter_`    | Prefix all variables        |
-| `ceenter_vm_` | Prefix for VM related roles |
-
 Ceenter metadata variables for VM Creation:
 
-| variable                    | default value | options                        | purpose                     |
-|-----------------------------|---------------|--------------------------------|-----------------------------|
-| `ceenter_vm_image`          | centos8       | rhel7, rhel8, centos7, centos8 | Prefix for VM related roles |
-| `ceenter_vm_flavor`         | small         | small, medium, large           | Prefix for VM related roles |
-| `ceenter_vm_disk_size_gb`   | 30            | number                         | Prefix for VM related roles |
-| `ceenter_vm_storage_flavor` | standard      | standard, performance          | Prefix for VM related roles |
-| `ceenter_vm_region`         | standard      | standard, performance          | Prefix for VM related roles |
+| variable            | description                                         | default value | options                        | purpose                     | status      |
+|---------------------|-----------------------------------------------------|---------------|--------------------------------|-----------------------------|-------------|
+| *vm_flavor*         | VM Flavor                                           | Small         | Small, Medium, Large           | Prefix for VM related roles | implemented |
+| *vm_cpu*            | Number of virtual CPUs (exclusive with *vm_flavor*) | 1             | INT                            | Prefix for VM related roles | implemented |
+| *vm_memory*         | memory in GB (exclusive with *vm_flavor*)           | 1             | INT                            | Prefix for VM related roles | implemented |
+| *vm_disk_size*      | disk size                                           | 30            | INT                            | Prefix for VM related roles | implemented |
+| *vm_OS*             | OS type                                             | centos8       | rhel7, rhel8, centos7, centos8 | Prefix for VM related roles | TBD         |
+| *vm_storage_flavor* | performance of vm storage                           | standard      | standard, performance          | Prefix for VM related roles | TBD         |
+| *ceenter_vm_region* | geographical region                                 | standard      | standard, performance          | Prefix for VM related roles | TBD         |
 
 ### Ansible role variable names ###
 
