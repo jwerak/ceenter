@@ -4,10 +4,9 @@
   connection: local
   gather_facts: no
   vars:
-    gcp_project: ceenter
-    zone: "europe-west3-a"
-    region: "europe-west3"
     gcp_vm_state_present: false
-
+    gcp_project: ceenter
+    zone: europe-west3-a
+    region: europe-west3
   roles:
-  - name: gcp_vm
+    - name: gcp_vm

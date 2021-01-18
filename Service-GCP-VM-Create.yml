@@ -1,12 +1,11 @@
 ---
-- name: Create an VM instance
+- name: Create an GCP VM instance
   hosts: localhost
   connection: local
   gather_facts: no
   vars:
     gcp_project: ceenter
-    zone: "europe-west3-a"
-    region: "europe-west3"
-
+    zone: europe-west3-a
+    region: europe-west3
   roles:
-  - name: gcp_vm
+    - name: gcp_vm
