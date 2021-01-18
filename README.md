@@ -19,6 +19,7 @@
                 - [Create GCP VM](#create-gcp-vm)
     - [OpenShift setup](#openshift-setup)
     - [Api Caller](#api-caller)
+        - [Example API Call to Ansible Tower](#example-api-call-to-ansible-tower)
 
 <!-- markdown-toc end -->
 
@@ -197,7 +198,15 @@ spec:
 
 Container image is build in [ansible-runner-images repository](https://github.com/ceenter/ansible-runner-images).
 
-## Api Caller
+## Api Caller ##
 
 The API Caller is an example GUI which helps generating the propoer API syntax. Ultimately it may also execute the API call, but not at this stage yet.
 The metdata for API Caller is under the api-caller folder. The first file is the menu-map.json where the interactive menu options are defined.
+
+### Example API Call to Ansible Tower ###
+
+Launch Job *Service-VM-GCP-Create* with Curl:
+
+```bash
+curl -k -X POST --user admin:<PASSWORD> https://<TOWER_URL>/api/v2/job_templates/Service-VM-GCP-Create/launch/
+```
