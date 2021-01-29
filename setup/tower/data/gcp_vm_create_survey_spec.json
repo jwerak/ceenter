@@ -1,0 +1,31 @@
+{
+  "spec": [
+    {
+      "required": true,
+      "variable": "vm_name",
+      "question_description": "VM Name for new server",
+      "question_name": "VM Name",
+      "type": "text"
+    },
+    {
+      "required": true,
+      "variable": "vm_flavor",
+      "question_description": "VM Flavor",
+      "question_name": "VM Flavor",
+      "choices": "Small\nMedium\nLarge",
+      "default": "Small",
+      "type": "multiplechoice"
+    },
+    {
+      "required": true,
+      "variable": "vm_disk_size",
+      "question_description": "Disk size for new VM",
+      "question_name": "Disk size",
+      "type": "integer",
+      "min": 20,
+      "max": 500
+    }
+  ],
+  "description": "Input parameters for creating VM in GCP",
+  "name": "GCP VM Create"
+}

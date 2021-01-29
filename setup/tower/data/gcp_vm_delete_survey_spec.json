@@ -1,0 +1,13 @@
+{
+  "spec": [
+    {
+      "required": true,
+      "variable": "vm_name",
+      "question_description": "VM Name for server to be deleted",
+      "question_name": "VM Name",
+      "type": "text"
+    }
+  ],
+  "description": "Input parameters for deleting VM in GCP",
+  "name": "GCP VM Delete"
+}
