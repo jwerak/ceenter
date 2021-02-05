@@ -8,7 +8,7 @@
       "type": "text"
     },
     {
-      "required": true,
+      "required": false,
       "variable": "vm_flavor",
       "question_description": "VM Flavor",
       "question_name": "VM Flavor",
@@ -17,11 +17,12 @@
       "type": "multiplechoice"
     },
     {
-      "required": true,
+      "required": false,
       "variable": "vm_disk_size",
       "question_description": "Disk size for new VM",
       "question_name": "Disk size",
       "type": "integer",
+      "default": 20,
       "min": 20,
       "max": 500
     }

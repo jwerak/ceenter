@@ -3,7 +3,7 @@
   gcp_compute_disk:
       name: "{{ gcp_vm_disk_name }}"
       size_gb: "{{ vm_disk_size }}"
-      source_image: 'projects/ubuntu-os-cloud/global/images/family/ubuntu-1604-lts'
+      source_image: "{{ gcp_vm_os_image }}"
       zone: "{{ zone }}"
       project: "{{ gcp_project }}"
       state: present

@@ -3,9 +3,11 @@
 vm_name: test
 vm_flavor: Small
 vm_disk_size: 20
+vm_os_version: centos-8
 
 # Local role defaults
 gcp_vm_state_present: true
 gcp_vm_flavor: "{{ vm_flavor_options[ vm_flavor | lower ] }}"
 gcp_vm_disk_name: "{{ vm_name }}-disk"
 gcp_vm_address_name: "{{ vm_name }}-address"
+gcp_vm_os_image: "{{ gcp_vm_os_images[vm_os_version] }}"
