@@ -11,3 +11,5 @@ gcp_vm_flavor: "{{ vm_flavor_options[ vm_flavor | lower ] }}"
 gcp_vm_disk_name: "{{ vm_name }}-disk"
 gcp_vm_address_name: "{{ vm_name }}-address"
 gcp_vm_os_image: "{{ gcp_vm_os_images[vm_os_version] }}"
+
+gcp_vm_ansible_user_ssh_pub_key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDKFI6svQaF6PiiVPvJDRVL+gSZmaPKVfMPhvMygmc9mqmf1fdszFHueF+phfY+YCc1SeuXnqFd3rcdItmpIcq46yzdRK9dZkI/p6VHWXno9a/neTIlBT71SI/hxrFKHxPaplrSeyfjSeO3+IWgn3l56GuaRG+nXRsz+AYFQqLUqDptmeTNu/PVJiMuzZY/kwVOrFvrj/hrEVLMVrnK9KLDirxAPUbHWiXTuviPkK0Q7lk8ONZEa7zABDNA3oLC92hTg2y9p+hPLfl2UV4bnPx6Gl+iSVpBIU9E6VN2nRmXGd9QzyB0v3GqxY8JHlFN1WogZlop3blFu6yzQ1Oq3kN0oVcoD7hZP8KuqkY/I4lCSslXJ3IXpCoUld6e+Ys39CmBmqc4wgCDqcUfOat2tbNHj0wxRtn2fjs3dyM0EeIQG1MJA4zre6xkulQcAsu+JfEUIImKx2H0odkbvKnXj8nKCqTwe6OEf8fpeKGtuNSl1QSJFcWhFeAiJ7cPl+s3z3c= ansible
