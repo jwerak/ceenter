@@ -99,14 +99,20 @@ Download [GCP credentials](https://docs.ansible.com/ansible/latest/scenario_guid
 ### Create VM on GCP
 
 ``` shell
-ansible-playbook GCP_VM_Create.yml
+ansible-playbook Service-GCP-VM-Create.yml
 ```
-
 
 ### Manual Tower setup ###
 
-Create Credential:
+Configure GCP:
+- [Create GCP account](https://docs.ansible.com/ansible/latest/scenario_guides/guide_gce.html#credentials)
+- Create [keys for ssh access](https://cloud.google.com/compute/docs/instances/ssh#third-party-tools) to GCP VMs
+  - [Generate SSH Keys](https://cloud.google.com/compute/docs/instances/adding-removing-ssh-keys#createsshkeys)
+        ssh-keygen -t rsa -f ~/.ssh/gcloud-ansible -C ansible
+
+Create Credentials:
 - GCP connection
+- GCP machine type for ssh access
 - Github
 - RHV
 
@@ -169,7 +175,9 @@ Parameters: {"vm_name":"mytest","vm_flavor":"Small","vm_memory":2,"vm_cpu":1,"vm
 ```
 
 
-## OpenShift setup ##
+## Environment Setup ##
+
+### OpenShift setup ###
 
 Additional Container Group on OpenShift
 - `oc create -n tower -f ocp-setup/role-pod-manager.yml`

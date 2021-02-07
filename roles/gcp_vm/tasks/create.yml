@@ -1,36 +1,50 @@
 ---
 - name: create a disk
   gcp_compute_disk:
-      name: "{{ gcp_vm_disk_name }}"
-      size_gb: "{{ vm_disk_size }}"
-      source_image: 'projects/ubuntu-os-cloud/global/images/family/ubuntu-1604-lts'
-      zone: "{{ zone }}"
-      project: "{{ gcp_project }}"
-      state: present
+    name: "{{ gcp_vm_disk_name }}"
+    size_gb: "{{ vm_disk_size }}"
+    source_image: "{{ gcp_vm_os_image }}"
+    zone: "{{ zone }}"
+    project: "{{ gcp_project }}"
+    state: present
   register: disk
 
 - name: create a address
   gcp_compute_address:
-      name: "{{ gcp_vm_address_name }}"
-      region: "{{ region }}"
-      project: "{{ gcp_project }}"
-      state: present
+    name: "{{ gcp_vm_address_name }}"
+    region: "{{ region }}"
+    project: "{{ gcp_project }}"
+    state: present
   register: address
 
 - name: create a instance
   gcp_compute_instance:
-      state: present
-      name: "{{ vm_name }}"
-      machine_type: "{{ gcp_vm_flavor }}"
-      disks:
-        - auto_delete: true
-          boot: true
-          source: "{{ disk }}"
-      network_interfaces:
-          - network: null # use default
-            access_configs:
-              - name: 'External NAT'
-                nat_ip: "{{ address }}"
-                type: 'ONE_TO_ONE_NAT'
-      zone: "{{ zone }}"
-      project: "{{ gcp_project }}"
+    state: present
+    name: "{{ vm_name }}"
+    machine_type: "{{ gcp_vm_flavor }}"
+    metadata:
+      ssh-keys: |-
+        ansible:{{ gcp_vm_ansible_user_ssh_pub_key }}
+    disks:
+      - auto_delete: true
+        boot: true
+        source: "{{ disk }}"
+    network_interfaces:
+      - network: null # use default
+        access_configs:
+          - name: 'External NAT'
+            nat_ip: "{{ address }}"
+            type: 'ONE_TO_ONE_NAT'
+    zone: "{{ zone }}"
+    project: "{{ gcp_project }}"
+
+- name: Wait for SSH to come up
+  wait_for:
+    host: "{{ address.address }}"
+    port: 22
+    delay: 10
+    timeout: 60
+
+- name: Print host ready info
+  debug:
+    msg: "New server is ready, it may be accessed via ssh ansible@{{ address.address }}"
