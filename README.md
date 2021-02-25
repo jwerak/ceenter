@@ -213,8 +213,14 @@ The metdata for API Caller is under the api-caller folder. The first file is the
 
 ### Example API Call to Ansible Tower ###
 
-Launch Job *Service-VM-GCP-Create* with Curl:
+Launch Job *Service-VM-GCP-Create* with curl:
 
 ```bash
 curl -k -X POST --user admin:<PASSWORD> https://<TOWER_URL>/api/v2/job_templates/Service-VM-GCP-Create/launch/
+```
+
+Query Job Template Survey fields:
+
+```bash
+curl -k -X GET --user admin:<PASSWORD> -H "Content-Type: application/json" ${TOWER_HOST}/api/v2/job_templates/Service-VM-GCP-Create/survey_spec/
 ```
