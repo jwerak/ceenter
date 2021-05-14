@@ -17,11 +17,22 @@
             - [Use awx cli tool](#use-awx-cli-tool)
             - [Setup Job Templates](#setup-job-templates)
                 - [Create GCP VM](#create-gcp-vm)
-    - [OpenShift setup](#openshift-setup)
+    - [Environment Setup](#environment-setup)
+        - [OpenShift setup](#openshift-setup)
     - [Api Caller](#api-caller)
         - [Example API Call to Ansible Tower](#example-api-call-to-ansible-tower)
 
 <!-- markdown-toc end -->
+
+Ceenter is a project to demonstrate Ansible Tower IaaS capabilities.
+
+Currently following scenarios are implemented:
+- RHV VM
+  - Create
+  - Delete
+- GCP VM
+  - Create
+  - Delete
 
 ## Ansible naming convention ##
 
