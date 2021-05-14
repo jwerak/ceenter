@@ -26,11 +26,15 @@
 
 Ceenter is a project to demonstrate Ansible Tower IaaS capabilities.
 
-Currently following scenarios are implemented:
+Following scenarios are implemented:
+
 - RHV VM
   - Create
   - Delete
 - GCP VM
+  - Create
+  - Delete
+- OpenShift Project
   - Create
   - Delete
 

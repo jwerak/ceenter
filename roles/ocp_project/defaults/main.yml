@@ -1,0 +1,5 @@
+---
+ocp_project_state: present
+# ocp_project_name: my_project
+ocp_project_description: ""
+ocp_project_display_name: ""

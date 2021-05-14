@@ -1,0 +1,8 @@
+---
+
+- name: Manage project {{ ocp_project_name }}
+  k8s:
+    state: "{{ state }}"
+    template: project.yml.j2
+
+...

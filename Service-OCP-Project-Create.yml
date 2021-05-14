@@ -1,0 +1,9 @@
+---
+- name: Create an OCP Project
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  vars:
+    ocp_project_name: ceenter-users
+  roles:
+    - name: ocp_project
